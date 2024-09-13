@@ -1,15 +1,13 @@
 package edu.unisabana.dyas.tdd.registry;
 
 import static org.junit.Assert.*;
-
 import java.util.ArrayList;
-
 import org.junit.Test;
 
 public class RegistryTest {
   Registry example = new Registry();
 
-  @Test
+  @Test // Valido
   public void edadRegisterTest() {
     // Given
     Person persona = new Person("Juan",1,20,Gender.MALE,true);   
@@ -21,7 +19,7 @@ public class RegistryTest {
     assertEquals(RegisterResult.VALID, result);
   }
 
-  @Test
+  @Test // No valido
   public void edadRegisterTestDos() {
     // Given
     Person persona = new Person("JuanDos",1,-10,Gender.MALE,true);   
