@@ -1,8 +1,9 @@
 package edu.unisabana.dyas.tdd.registry;
 
-import static org.junit.Assert.assertEquals;
-
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 public class RegistryTest {
@@ -77,4 +78,56 @@ public class RegistryTest {
     });
   }
 
+  @Test
+  public void duplicadoRegisterTest() {
+    // Given
+    Person personaUno = new Person("Santiago",1,10,Gender.FEMALE,false);   
+    Person personaDos = new Person("Santiago",2,10,Gender.FEMALE,false);   
+    ArrayList<Person> personaLista = new ArrayList<>();
+    personaLista.add(personaUno);
+
+    // When
+    RegisterResult result = example.duplicadoRegister(personaLista, personaDos);
+
+    // Then
+    assertEquals(RegisterResult.VALID, result);
+
+  }
+
+@Test
+  public void duplicadoRegisterTestDos() {
+    // Given
+    Person personaUno = new Person("Santiago",1,10,Gender.FEMALE,false);   
+    Person personaDos = new Person("Santiago",1,10,Gender.FEMALE,false);   
+    ArrayList<Person> personaLista = new ArrayList<>();
+    personaLista.add(personaUno);
+
+    // When + Then
+    assertThrows(IllegalArgumentException.class, () -> {
+      example.duplicadoRegister(personaLista, personaDos); 
+    });
+  }
+
+  @Test
+  public void registerVoter() {
+    // Given
+    Person persona = new Person("Mommy",3,40,Gender.FEMALE,true);
+
+    // When
+    Person result = example.registerVoter(persona);
+
+    // Then
+    assertTrue(result instanceof Person);
+  }
+  @Test
+  public void registerVoterDos() {
+    // Given
+    Person persona = new Person("Mommy",3,40,Gender.FEMALE,false);
+
+    // When
+    Person result = example.registerVoter(persona);
+
+    // Then
+    assertFalse(result instanceof Person);
+  }
 }

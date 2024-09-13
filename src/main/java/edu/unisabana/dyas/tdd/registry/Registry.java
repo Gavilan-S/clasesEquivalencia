@@ -1,19 +1,22 @@
 package edu.unisabana.dyas.tdd.registry;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Registry {
+  ArrayList<Person> personaLista = new ArrayList<>();
 
   public Person registerVoter(Person persona) {
     try {
       edadRegister(persona);
       menorRegister(persona);
       muertoRegister(persona); 
+      duplicadoRegister(personaLista, persona);
+      personaLista.add(persona);
+      return persona;
     } catch (Exception e) {
       System.err.println("Error en el registro de: " + persona.getName());
+      return null;
     } 
-    return persona;
   }
 
   // Edad Invalida
@@ -45,4 +48,14 @@ public class Registry {
     }
   }
 
+  // Duplicado
+  public RegisterResult duplicadoRegister(ArrayList<Person> personaLista, Person persona) {
+    for(Person cualquiera : personaLista) {
+      if(cualquiera.getId() == persona.getId()) {
+        throw new IllegalArgumentException(persona.getName() + " registrado duplicado");
+      }  
+    }
+    return RegisterResult.VALID;
+  }
 }
+
