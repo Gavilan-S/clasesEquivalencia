@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Registry {
-  private List<Person> personaLista;
 
   public Person registerVoter(Person persona) {
     try {
