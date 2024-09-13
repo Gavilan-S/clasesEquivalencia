@@ -15,11 +15,11 @@ Este repositorio contiene un programa de registro de votación de personas imple
 
 Las clases de equivalencia se utilizaron para diseñar casos de prueba que cubren diferentes escenarios de entrada. En particular:
 
-- **PersonTest.java**:
+- **Person.java**:
   - **Casos de prueba válidos**: Pruebas con IDs válidos y atributos de persona correctos.
   - **Casos de prueba inválidos**: Pruebas con IDs duplicados o inválidos.
 
-- **VotingSystemTest.java**:
+- **Registry.java**:
   - **Casos de prueba para registro exitoso**: Pruebas para verificar que los votantes se registran correctamente.
   - **Casos de prueba para errores de registro**: Pruebas para verificar que se manejen adecuadamente los errores, como la tentativa de registro de un votante ya registrado.
 
